@@ -16,24 +16,29 @@
   <body>
     <div class="container">
       <div class="weather-app">
-
-      <div class="weather-app">
-        <h1>Paris</h1>
-        <ul>
-          <li>Monday 03:00</li>
-          <li>clear</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <img src="src\sun.png" alt="clear" width="30" />
-            <strong>12</strong> °C | °F
-          </div>
-          <div class="col-6">
+        <div class="weather-app-wrapper">
+          <div class="overview">
+            <h1>Paris</h1>
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 69%</li>
-              <li>Wind:3 km/h</li>
+              <li>Monday 03:00</li>
+              <li>clear</li>
             </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img src="src\sun.png" alt="clear" width="" />
+                <strong>13</strong
+                ><span class="units"> °C |<a href="#" id="fah">°F</a> </span>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precipitation: 0%</li>
+                <li>Humidity: 69%</li>
+                <li>Wind:3 km/h</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
