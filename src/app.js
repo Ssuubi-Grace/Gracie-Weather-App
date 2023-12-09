@@ -42,4 +42,15 @@ console.log(apiUrl);
 //fetching the results of the api in javascript using axios
 axios.get(apiUrl).then(displayTemperature);
 
+
+//changing the h1 to a searched city
+function handleSearchSubmit(event) { 
+  event.preventDefault();
+let searchInput =document.querySelector(".search-form-input"); 
+let cityElement2=document.querySelector("#city");
+cityElement2.innerHTML =searchInput.value;
+}
+let searchFormElement =document.querySelector(".search-form"); 
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
    
