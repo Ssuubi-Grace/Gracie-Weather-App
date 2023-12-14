@@ -87,4 +87,37 @@ cityElement2.innerHTML =searchInput.value;
 let searchFormElement =document.querySelector(".search-form"); 
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
+
+
+// Adding an event listener to both temperature units
+let unitToggleCelsius = document.querySelector("#cel");
+let unitToggleFahrenheit = document.querySelector("#fah");
+
+unitToggleCelsius.addEventListener("click", toggleTemperatureUnit);
+unitToggleFahrenheit.addEventListener("click", toggleTemperatureUnit);
+
+function toggleTemperatureUnit(event) {
+  event.preventDefault();
+
+  let temperatureElement = document.querySelector("#temperature");
+  let currentTemperature = parseFloat(temperatureElement.innerHTML);
+
+  // Checking the clicked unit and convert to the opposite
+  if (event.target.id === "cel") {
+    // Converting to Celsius
+    let celsiusTemperature = ((currentTemperature - 32) * 5) / 9;
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+    unitToggleCelsius.classList.add("active");
+    unitToggleFahrenheit.classList.remove("active");
+  } else {
+    // Converting to Fahrenheit
+    let fahrenheitTemperature = (currentTemperature * 9) / 5 + 32;
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+    unitToggleFahrenheit.classList.add("active");
+    unitToggleCelsius.classList.remove("active");
+  }
+}
+
+
+
    
