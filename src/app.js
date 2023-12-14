@@ -1,7 +1,7 @@
 //function to receive a timestamp
 function formatDate(timestamp){
     //calculate the date
-    let date=new Date(timestamp);
+    let date=new Date();
     let hours=date.getHours();
     if(hours<10){
         hours=`0${hours}`;
@@ -10,13 +10,14 @@ function formatDate(timestamp){
     if(minutes<10){
         minutes=`0${minutes}`;
     }
-    let days=["Sunday","Monday","Tuesday","Wednesday","Thu"]
+    let days=["Sunday","Monday","Tuesday","Wednesday","Thursday", "Friday", "Saturday"];
     let day=days[date.getDay()];
     return `${day} ${hours} : ${minutes}`;
 }
 
 //Defining a function that I want axios to call when I get the response back from the api
 function displayTemperature(response){
+  console.log(response);
     let temperatureElement=document.querySelector("#temperature");
     let CityElement=document.querySelector("#city");
     let DescriptionElement=document.querySelector("#description");
@@ -24,7 +25,9 @@ function displayTemperature(response){
     let feelslikeElement=document.querySelector("#feelslike");
     let windElement=document.querySelector("#wind");
     let dateElement=document.querySelector("#date");
-
+    let iconElement=document.querySelector(
+        "#weather_icon"
+    )
     
     temperatureElement.innerHTML=Math.round(response.data.main.temp);
     CityElement.innerHTML=response.data.name;
@@ -32,11 +35,18 @@ function displayTemperature(response){
     humidityElement.innerHTML=response.data.main.humidity;
     feelslikeElement.innerHTML=Math.round(response.data.main.feels_like);
     windElement.innerHTML=Math.round(response.data.wind.speed);
-    dateElement.innerHTML=formatDate(response.data.dt*1000);
-
-
-    //dateElement.innerHTML = formatDate(response.data.dt * 1000);
+    dateElement.innerHTML=formatDate(response.data.dt);
+    
+    iconElement.innerHTML= `<img
+                    class="icon"
+                    src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png";
+                  />`
+    
 }
+
+
+
+
 // Loading default city (Mumbai) on page load
 searchCity("London");
 function searchCity(city) {

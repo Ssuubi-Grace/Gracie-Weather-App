@@ -24,13 +24,14 @@ header{
     border: none;
     border-radius: 5px;
     max-width: 80%;
+    width: 100%;
     padding: 10px 15px;
     font-size: 16px;
 }
 
 .search-form-button{
     background: purple;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
     border-radius: 6px;
     color: white;
@@ -62,12 +63,19 @@ li:first-letter{
 .overview{
     margin-bottom: 20px;
 }
-.weather-temperature img{
+/*.weather-temperature img{
   margin-right: 5px; 
   width: 64px; 
   height: 64px; 
   margin-bottom: 24px;
+}*/
+
+.icon{
+width: 70px; 
+  height: 70px; 
+  margin-bottom: 20px;
 }
+
 .weather-temperature strong{
     color: rgb(33,33,33);
     font-size: 60px;
