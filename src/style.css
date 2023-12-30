@@ -39,11 +39,11 @@ header{
 }
 
 h1{
-    color: 878787;
+    /*color: #878787;*
     /*font-size: 24px;*/
     /*font-weight: 100;*/
     line-height: 28px;
-    margin-bottom: 0;
+    margin-bottom: 15px;
 }
 ul{
     margin: 0;
@@ -95,10 +95,21 @@ width: 70px;
   font-weight: bold; 
 }
 
+.forecast{
+    margin-top: 20px;
+    text-align: center;
+}
 
-
-
-
+.day{
+    font-size: 16px;
+    opacity: 0.6;
+}
+    .forecast-temp{
+        font-size: 13px ;
+    }
+.min{
+    opacity:0.4;
+}
 
 
 footer{
