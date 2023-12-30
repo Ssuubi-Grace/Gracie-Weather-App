@@ -117,7 +117,24 @@ function toggleTemperatureUnit(event) {
     unitToggleCelsius.classList.remove("active");
   }
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let dayz = ["Tue", "Wed", "Thur", "Fri", "Sat"];
+  let forecastHtml = "<div class='row'>";
+  dayz.forEach(function (day) {
+    forecastHtml +=
+      `<div class="col">
+        <div class="day">${day}</div>
+        <img src="src/sun.png" alt="icon" width="20" />
+        <div class="forecast-temp">
+          <span class="min">15°</span>
+          <span class="max">18°</span>
+        </div>
+      </div>`;
+  });
+  forecastHtml += "</div>";
+  forecastElement.innerHTML = forecastHtml;
+}
 
 
-
-   
+ displayForecast();
