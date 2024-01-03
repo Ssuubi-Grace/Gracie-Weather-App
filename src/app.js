@@ -1,5 +1,4 @@
 //function to receive a timestamp
-
 function formatDate(timestamp){
     //calculate the date
     let date=new Date();
@@ -51,8 +50,8 @@ function displayTemperature(response){
 
 
 
-// Loading default city (Mumbai) on page load
-searchCity("London");
+// Loading default city (Bhubaneswar) on page load
+searchCity("Bhubaneswar");
 function searchCity(city) {
   let apiKey="ef536c135f931c48635e435d71067995";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -80,23 +79,6 @@ function handleSearchSubmit(event) {
   }
 }
 
-/*let apiKey="ef536c135f931c48635e435d71067995";
-let city="London";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-console.log(apiUrl);
-//fetching the results of the api in javascript using axios
-axios.get(apiUrl).then(displayTemperature);
-*/
-
-//changing the h1 to a searched city
-/*
-function handleSearchSubmit(event) { 
-  event.preventDefault();
-let searchInput =document.querySelector(".search-form-input"); 
-let cityElement2=document.querySelector("#city");
-cityElement2.innerHTML =searchInput.value;
-}*/
-
 let searchFormElement =document.querySelector(".search-form"); 
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
@@ -119,7 +101,6 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#currentbtn");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-///////////////////////////////////
 
 // Adding an event listener to both temperature units
 let unitToggleCelsius = document.querySelector("#cel");
@@ -149,79 +130,28 @@ function toggleTemperatureUnit(event) {
     unitToggleCelsius.classList.remove("active");
   }
 }
-/*
-function getForecast(city){
-let apiKey="ef536c135f931c48635e435d71067995";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather/v1/forecast?q=${city}&appid=${apiKey}&units=metric`;
-axios(apiUrl).then(displayForecast);
-}
-*/
+
 function getForecast(city) {
   let apiKey = "ef536c135f931c48635e435d71067995";
   let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios(apiUrl).then(displayForecast);
 }
 
-/*
-function displayForecast(response) {
-  console.log(response.data);
-  let forecastHtml = "<div class='row'>";
-  response.data.list.forEach(function (day) {
-    forecastHtml +=
-      `<div class="col">
-        <div class="day">Mon</div>
-        <img src="day.main.weather[0].icon;" />
-        <div class="forecast-temp">
-          <span class="min">${Math.round(day.main.temp_max)}°</span>
-          <span class="max">18°</span>
-        </div>
-      </div>`;
-  });
-  forecastHtml += "</div>";
-    let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = forecastHtml;
-}
-*/
+
 function formatDay(timestamp){
   let date=new Date(timestamp*1000);
   let days=["Sunday","Monday","Tuesday","Wednesday","Thursday", "Friday", "Saturday"];
     return days[date.getDay()];
 }
 
-/*
-function displayForecast(response) {
-  console.log(response.data);
-  let forecastHtml = "<div class='row'>";
-  response.data.list.forEach(function (day, index) {
-    if(index<5){
 
-    
-    forecastHtml +=
-      `<div class="col">
-        <div class="day">${formatDay(day.dt)}</div>
-        <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" />
-        <div class="forecast-temp">
-          <strong class="max">${Math.round(day.main.temp_max)}°</strong>
-          <strong class="min">${Math.round(day.main.temp_min)}°</strong>
-        </div>
-      </div>`;
-      }
-  });
-  forecastHtml += "</div>";
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = forecastHtml;
-}
-
-*/
-
-///COGRR
 function displayForecast(response) {
   console.log(response.data);
   let forecastHtml = "<div class='row'>";
   let days = [];
   response.data.list.forEach(function (day) {
     let forecastDay = formatDay(day.dt);
-    // Check if the day is not already added and limit it to 5 unique days
+    // Checking if the day is not already added and limit it to 5 unique days
     if (!days.includes(forecastDay) && days.length < 5) {
       days.push(forecastDay);
       forecastHtml +=
