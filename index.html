@@ -32,6 +32,9 @@
                 id="search-form-input"
               />
               <input type="submit" value="search" class="search-form-button" />
+              <button type="button" class="btn btn-success" id="currentbtn">
+                Current
+              </button>
             </form>
           </header>
           <div class="overview">
@@ -64,10 +67,19 @@
             <div class="col-6">
               <ul>
                 <!---<li>Precipitation: 0%</li>-->
-                <li>Feels like: <span id="feelslike"></span> °C</li>
-                <li>Humidity: <span id="humidity"></span> %</li>
-                <li>Wind: <span id="wind"></span> km/h</li>
+                <li>
+                  Feels like: <span id="feelslike"></span>
+                  <strong class="description-units">°C</strong>
+                </li>
               </ul>
+              <li>
+                Humidity: <span id="humidity"></span>
+                <strong class="description-units">%</strong>
+              </li>
+              <li>
+                Wind: <span id="wind"></span>
+                <strong class="description-units">km/h</strong>
+              </li>
             </div>
           </div>
 
